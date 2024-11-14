@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+//    tambahkan parcelize
+    id("kotlin-parcelize")
 }
 
 android {
@@ -33,10 +35,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+//    tambahkan binding
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -45,4 +50,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //retrofit itu library untuk menghandle REST API
+    //https://github.com/square/retrofit/tree/trunk/retrofit-converters/gson
+    implementation (libs.converter.gson)
+    //https://square.github.io/retrofit/
+    implementation(libs.retrofit)
+
+    //tambahkan Glide jangan lupa cari di google
+    implementation (libs.glide)
+
 }
